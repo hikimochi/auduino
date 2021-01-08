@@ -58,7 +58,6 @@ void loop()//ループ関数
   } else {
     delay(2000);
   }
-
   clearDisplay();
 }
 
