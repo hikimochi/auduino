@@ -22,7 +22,7 @@ int f=3;
 int g=4; 
 int dp=5;  
 
-void setup()//初期設定するところ
+void setup()
 {
   // Ultrasonic
   Serial.begin(9600);
@@ -73,7 +73,7 @@ void buzzer_display_by_distance(long distance)
   } else if ((distance >= 50) && (distance < 100)){
     display3();
     buzzer3();
-  } else{
+  } else if ((distance >= 100) && (distance < 200)){
     display4();
     buzzer4();
   }
