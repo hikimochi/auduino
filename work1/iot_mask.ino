@@ -76,7 +76,6 @@ void buzzer_display_by_distance(long distance)
     display4();
     buzzer4();
   }
-  clearDisplay();
 }
 
 void display1() 
