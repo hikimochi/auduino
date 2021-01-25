@@ -16,14 +16,6 @@ res = requests.post(url, files={"image_data": image})
 data = json.loads(res.content)
 result = data['result']
 
-# serial
-ser = serial.Serial()
-ser.port = "/dev/tty.usbmodem144401"
-ser.baudrate = 115200
-ser.setDTR(False)
-ser.open()
-time.sleep(2)
-
 for r in result:
     print(f"""
     年齢: {r['age']}
@@ -56,6 +48,8 @@ def stress_level(anger, sad):
         ser.write(b'1')
     return
 
-stress_level(sad, anger)
-time.sleep(5)
-ser.close()
+
+with serial.Serial('/dev/tty.usbmodem144401', 115200, timeout=0.1) as ser:
+    time.sleep(2)
+    stress_level(sad, anger)
+    ser.close()
