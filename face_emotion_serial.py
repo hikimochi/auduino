@@ -34,7 +34,7 @@ def stress_level(anger, sad):
     if 0.6 < stress:
         print('level 3')
         ser.write(b'3')
-    elif 0.4 < stress <= 0.6:
+    elif 0.2 < stress <= 0.6:
         print('level 2')
         ser.write(b'2')
     else:
