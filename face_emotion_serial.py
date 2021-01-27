@@ -7,7 +7,7 @@ import time
 import serial
 
 # image
-image_path = './images/face.jpg'
+image_path = './images/komari.jpg'
 image =  open(image_path, 'rb').read()
 
 # face api
@@ -31,16 +31,10 @@ for r in result:
 def stress_level(anger, sad):
     stress = anger + sad
     print(stress)
-    if 0.8 < stress:
-        print('level 5')
-        ser.write(b'5')
-    elif 0.6 < stress <= 0.8:
-        print('level 4')
-        ser.write(b'4')
-    elif 0.4 < stress <= 0.6:
+    if 0.6 < stress:
         print('level 3')
         ser.write(b'3')
-    elif 0.2 < stress <= 0.4:
+    elif 0.4 < stress <= 0.6:
         print('level 2')
         ser.write(b'2')
     else:
