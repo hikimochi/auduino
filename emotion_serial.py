@@ -57,8 +57,6 @@ def stress_level(anger_face, sad_face, anger_voice, sorrow_voice):
 # Arduino
 device = '/dev/tty.usbmodem144401'
 
-stress_level(anger_face, sad_face, anger_voice, sorrow_voice)
-
 with serial.Serial(device, 115200, timeout=0.1) as ser:
     time.sleep(2)
     stress_level(anger_face, sad_face, anger_voice, sorrow_voice)
