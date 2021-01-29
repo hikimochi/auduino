@@ -7,7 +7,7 @@ import time
 import serial
 
 # face API
-image_path = './images/komari.jpg'
+image_path = './images/sample.jpg'
 image =  open(image_path, 'rb').read()
 url = "https://ai-api.userlocal.jp/face"
 res = requests.post(url, files={"image_data": image})
@@ -30,7 +30,7 @@ for r in result:
 voice_url ='https://api.webempath.net/v2/analyzeWav'
 apikey = os.environ['API_KEY']
 payload = {'apikey': apikey}
-voice_path = './voices/watashi.wav'
+voice_path = './voices/sample.wav'
 voice_data = open(wav, 'rb')
 file = {'wav': voice_data}
 
@@ -53,8 +53,10 @@ def stress_level(anger_face, sad_face, anger_voice, sorrow_voice):
         ser.write(b'1')
     return
 
+# Arduino
+device = '/dev/tty.usbmodem144401'
 
-with serial.Serial('/dev/tty.usbmodem144401', 115200, timeout=0.1) as ser:
+with serial.Serial(device, 115200, timeout=0.1) as ser:
     time.sleep(2)
     stress_level(sad, anger)
     ser.close()
