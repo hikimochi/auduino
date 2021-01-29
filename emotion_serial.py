@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import os
 import requests
 import json
 import time
@@ -30,7 +31,7 @@ for r in result:
 voice_url ='https://api.webempath.net/v2/analyzeWav'
 apikey = os.environ['API_KEY']
 payload = {'apikey': apikey}
-voice_path = './voices/sample.wav'
+wav= './voices/sample.wav'
 voice_data = open(wav, 'rb')
 file = {'wav': voice_data}
 
@@ -56,7 +57,9 @@ def stress_level(anger_face, sad_face, anger_voice, sorrow_voice):
 # Arduino
 device = '/dev/tty.usbmodem144401'
 
+stress_level(anger_face, sad_face, anger_voice, sorrow_voice)
+
 with serial.Serial(device, 115200, timeout=0.1) as ser:
     time.sleep(2)
-    stress_level(sad, anger)
+    stress_level(anger_face, sad_face, anger_voice, sorrow_voice)
     ser.close()
